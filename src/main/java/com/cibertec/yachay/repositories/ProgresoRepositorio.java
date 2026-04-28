@@ -7,5 +7,9 @@ import java.util.List;
 
 @Repository
 public interface ProgresoRepositorio extends JpaRepository<Progreso, Long> {
+
     List<Progreso> findByEvaluacionIdEvaluacion(Long idEvaluacion);
+
+    List<Progreso> findByEvaluacionUsuarioIdUsuario(Long idUsuario);
+
 }

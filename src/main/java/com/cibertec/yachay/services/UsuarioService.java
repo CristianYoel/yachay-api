@@ -34,6 +34,16 @@ public class UsuarioService {
         return usuarioRepositorio.save(existente);
     }
 
+    public Usuario login(String correo,String clave){
+
+        return usuarioRepositorio
+                .findByCorreoAndClave(correo,clave)
+                .orElseThrow(
+                        ()-> new RuntimeException("Credenciales incorrectas")
+                );
+
+    }
+
     public void eliminar(Long id) {
         usuarioRepositorio.deleteById(id);
     }

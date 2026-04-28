@@ -20,6 +20,10 @@ public class ProgresoService {
         return progresoRepositorio.findByEvaluacionIdEvaluacion(idEvaluacion);
     }
 
+    public List<Progreso> listarPorUsuario(Long idUsuario) {
+        return progresoRepositorio.findByEvaluacionUsuarioIdUsuario(idUsuario);
+    }
+
     public Progreso obtener(Long id) {
         return progresoRepositorio.findById(id)
                 .orElseThrow(() -> new RuntimeException("Progreso no encontrado con id: " + id));

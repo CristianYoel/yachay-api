@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name = "usuario")
+@Table(name="usuario")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -12,21 +12,21 @@ import lombok.*;
 public class Usuario {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_usuario")
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long idUsuario;
 
-    @Column(name = "correo", nullable = false, unique = true)
+    private String nombre;
+
+    @Column(nullable=false)
+    private Boolean activo;
+
+    @Column(unique=true)
     private String correo;
 
-    @Column(name = "clave", nullable = false)
     private String clave;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "rol", nullable = false)
     private Rol rol;
 
-    @Column(name = "nombre", nullable = false)
-    private String nombre;
-
+    //private Boolean activo;
 }

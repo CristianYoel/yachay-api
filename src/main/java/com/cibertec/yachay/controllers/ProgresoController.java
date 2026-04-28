@@ -14,6 +14,16 @@ public class ProgresoController {
 
     private final ProgresoService progresoService;
 
+    @GetMapping("/usuario/{idUsuario}")
+    public List<Progreso> progresoUsuario(
+            @PathVariable Long idUsuario){
+
+        return progresoService
+                .listarPorUsuario(idUsuario);
+
+    }
+
+
     @GetMapping
     public List<Progreso> listar() {
         return progresoService.listar();

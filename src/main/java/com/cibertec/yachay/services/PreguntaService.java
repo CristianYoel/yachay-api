@@ -25,8 +25,30 @@ public class PreguntaService {
                 .orElseThrow(() -> new RuntimeException("Pregunta no encontrada con id: " + id));
     }
 
-    public Pregunta crear(Pregunta pregunta) {
-        return preguntaRepositorio.save(pregunta);
+
+
+
+    public Pregunta crear(Pregunta pregunta){
+
+        long cantidad=
+                preguntaRepositorio
+                        .findByTemaIdTema(
+                                pregunta.getTema()
+                                        .getIdTema()
+                        ).size();
+
+        if(cantidad>=4){
+
+            throw new RuntimeException(
+                    "Solo 4 preguntas por tema"
+            );
+
+        }
+
+        return preguntaRepositorio.save(
+                pregunta
+        );
+
     }
 
     public Pregunta actualizar(Long id, Pregunta pregunta) {
