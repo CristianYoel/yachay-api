@@ -3,6 +3,9 @@ package com.cibertec.yachay.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "opcion_respuesta")
 @Data
@@ -16,21 +19,37 @@ public class OpcionRespuesta {
     @Column(name = "id_opcion")
     private Long idOpcion;
 
-    @Column(name = "texto", nullable = false, columnDefinition = "TEXT")
+    @Column(
+            name="texto",
+            nullable=false,
+            columnDefinition="TEXT"
+    )
     private String texto;
 
-    @Column(name = "peso", nullable = false)
+    @Column(name="peso",nullable=false)
     private Integer peso;
 
-    @Column(name = "es_correcta", nullable = false)
+    @Column(name="es_correcta",nullable=false)
     private Boolean esCorrecta;
 
+
+
+    @JsonIgnoreProperties({
+            "hibernateLazyInitializer",
+            "handler"
+    })
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_pregunta", nullable = false)
+    @JoinColumn(
+            name="id_pregunta",
+            nullable=false
+    )
     private Pregunta pregunta;
 
+
+
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_pregunta_siguiente")
+    @JoinColumn(name="id_pregunta_siguiente")
     private Pregunta preguntaSiguiente;
 
 }

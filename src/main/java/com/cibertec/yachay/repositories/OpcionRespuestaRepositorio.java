@@ -7,5 +7,13 @@ import java.util.List;
 
 @Repository
 public interface OpcionRespuestaRepositorio extends JpaRepository<OpcionRespuesta, Long> {
-    List<OpcionRespuesta> findByPreguntaIdPregunta(Long idPregunta);
+
+    List<OpcionRespuesta> findByPreguntaIdPregunta(
+            Long idPregunta
+    );
+
+    long countByPreguntaIdPregunta(
+            Long idPregunta
+    );
+
 }

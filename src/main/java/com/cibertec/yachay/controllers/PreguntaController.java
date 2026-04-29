@@ -10,6 +10,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/preguntas")
 @RequiredArgsConstructor
+@CrossOrigin(origins="http://localhost:4200")
 public class PreguntaController {
 
     private final PreguntaService preguntaService;
